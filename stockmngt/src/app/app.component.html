@@ -1,6 +1,6 @@
 <div class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper" style="overflow:visible;">
-    <header class="main-header">
+    <header class="main-header" *ngIf="islogin.isUserLogin">
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -252,7 +252,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="#" class="btn btn-default btn-flat"(click)="SingOutMethod()">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -266,7 +266,7 @@
         </nav>
     </header>
 
-    <aside class="main-sidebar">
+    <aside class="main-sidebar" *ngIf="islogin.isUserLogin">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
             <!-- Sidebar user panel -->
@@ -470,10 +470,10 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
+      <!-- <h1>
         Dashboard Change 
-      </h1>
-      
+      </h1> -->
+      <router-outlet></router-outlet>
     </section>
     </div>
 
