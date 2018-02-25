@@ -11,12 +11,16 @@ import {LoginService} from './login/login-service.service';
 import { FormsModule } from "@angular/forms";
 import {CommonModule } from "@angular/common";
 import {HttpModule} from '@angular/http';
+import { UserRegistrationComponent } from './Master/user-registration/user-registration.component';
+import { MasterUiComponent } from './Master/master-ui/master-ui.component';
 @NgModule({
   
   declarations: [
     AppComponent,
     LoginComponent,
-    DashBoardComponent
+    DashBoardComponent,
+    UserRegistrationComponent,
+    MasterUiComponent
   ],
   imports: [
     BrowserModule,FormsModule,HttpModule,
