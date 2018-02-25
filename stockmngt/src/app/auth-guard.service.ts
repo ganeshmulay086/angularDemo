@@ -1,33 +1,30 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild } from '@angular/router';
-import {ShareServiceService} from './share-service.service';
-import {Router} from '@angular/router';
+import { ShareService } from './share-service.service';
+import { Router } from '@angular/router';
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
 
-  constructor(private shareServiceService:ShareServiceService,
-              private router:Router)
-  {
-    this.shareServiceService.GetIsLogin();
+  constructor(private shareService: ShareService,
+    private router: Router) {
+    this.shareService.GetIsLogin();
   }
   canActivate() {
-    if(localStorage.getItem("CurrentUser") == null || localStorage.getItem("CurrentUser") == undefined)
-    {
+    if (localStorage.getItem("CurrentUser") == null || localStorage.getItem("CurrentUser") == undefined) {
       debugger
-     this.shareServiceService.GetIsLogOut();
-     this.router.navigate(["/"]);
-     return false;
+      this.shareService.GetIsLogOut();
+      this.router.navigate(["/"]);
+      return false;
     }
     return true;
   }
 
   canActivateChild() {
-    if(localStorage.getItem("CurrentUser") != null || localStorage.getItem("CurrentUser")!=undefined)
-    {
+    if (localStorage.getItem("CurrentUser") != null || localStorage.getItem("CurrentUser") != undefined) {
       debugger
-     this.shareServiceService.GetIsLogin();
-     this.router.navigate(["/"]);
-     return false;
+      this.shareService.GetIsLogin();
+      this.router.navigate(["/"]);
+      return false;
     }
     console.log('checking child route access');
     return true;

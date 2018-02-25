@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ShareServiceService,Islogin} from './share-service.service';
+import {ShareService,Islogin} from './share-service.service';
 import {Router} from '@angular/router';
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent {
   
   title = 'app';
   islogin:Islogin;
-  constructor(private shareServiceService:ShareServiceService,private router:Router)
+  constructor(private shareServiceService:ShareService,private router:Router)
   {
     this.islogin =this.shareServiceService.islogin;
   }

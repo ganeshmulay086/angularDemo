@@ -1,28 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import {ShareServiceService} from '../share-service.service';
-import {Router,ActivatedRoute} from '@angular/router';
+import { ShareService } from '../share-service.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LoginUserTO } from './LoginUserTO';
+import { fromPromise } from 'rxjs/observable/fromPromise';
+import { LoginService } from './login-service.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private shareServiceService:ShareServiceService,
-              private router: Router,   
-              private route: ActivatedRoute)
-               { 
+  constructor(private shareService: ShareService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private loginService: LoginService) {
 
-               }
-
+  }
+  loginUserTO: LoginUserTO = {};
+  loginSucess: boolean = false;
   ngOnInit() {
   }
-  getLoginInfo()
-  {
+  getLoginInfo() {
+    localStorage.setItem("CurrentUser", "123");
+    this.shareService.GetIsLogin();
+    this.router.navigate(["/DashBoardComponent"]);
     debugger
-    localStorage.setItem("CurrentUser","123");
-
-       this.shareServiceService.GetIsLogin();
-       this.router.navigate(["/DashBoardComponent"]);
-     // this.islogin= this.shareServiceService.islogin;
+  //  this.loginService.GetLoginInfo(this.loginUserTO).subscribe(
+  //     w => {
+  //       console.log(w);
+  //       if (this.loginSucess) {
+          
+  //         // this.islogin= this.shareServiceService.islogin;
+  //       }
+  //     }
+  //   );
+    
   }
 }
